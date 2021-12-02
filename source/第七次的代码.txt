@@ -1,0 +1,7 @@
+ void Update()
+    {
+        if (pause)
+            return;
+        transform.Translate(direct * Time.deltaTime, Space.World);
+
+    }
