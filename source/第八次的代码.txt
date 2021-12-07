@@ -1,0 +1,15 @@
+IEnumerator Rotate() 
+    {
+        rotateStart = true;
+        float angle = 0;
+        while (angle >= -178) 
+        {
+            angle -= 2f;
+            Debug.Log(angle);
+            box.rotation = Quaternion.Euler(0, angle, 0);
+            yield return null;
+        }
+        box.rotation = Quaternion.Euler(0, -180, 0);
+        rotateStart = false;
+        main.pause = false;
+    }
