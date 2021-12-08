@@ -1,0 +1,33 @@
+ void LateUpdate()
+    {
+        if (rotateStart)  
+            return;
+
+        if (main.direct == Vector3.left)
+        {
+            accelerate += new Vector3(-speed, 0, 0);
+        }
+        else if (main.direct == Vector3.down)
+        {
+            accelerate += new Vector3(0, -speed, 0);
+        }
+        else if (main.direct == Vector3.right)
+        {
+            accelerate += new Vector3(speed, 0, 0);
+            if (Mathf.Abs(transform.position.x) <1 && canRoate)
+            {
+                canRoate = false;
+                rotateStart = true;
+                StartCoroutine(Rotate()); 
+                main.pause = true;
+            }
+        }
+        else if (main.direct == Vector3.up)
+        {
+            canRoate = true;
+            accelerate += new Vector3(0, speed, 0);
+        }
+
+        transform.position = m_Player.transform.position - Dir + accelerate; 
+        transform.LookAt(m_Player.transform.position); 
+    }
