@@ -1,0 +1,11 @@
+else if (main.direct == Vector3.right)
+        {
+            accelerate += new Vector3(speed, 0, 0);
+            if (Mathf.Abs(transform.position.x) <1 && canRoate)
+            {
+                canRoate = false;
+                rotateStart = true;
+                StartCoroutine(Rotate()); 
+                main.pause = true;
+            }
+        }
